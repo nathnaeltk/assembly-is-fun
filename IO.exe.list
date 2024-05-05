@@ -1,0 +1,115 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+IO.exe -- emu8086 assembler version: 4.08  
+ 
+[ 4/25/2024  --  9:48:12 AM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       ; Header section
+[   2]        :                                       include 'emu8086.inc'
+[   3]        :                                       TITLE "input output operation" ;quotes could be single or double
+[   4]        :                                       NAME "IO" ; compiled version of this code is this
+[   5]        :                                       .MODEL small ;indicating the number of data and stack section in the program
+[   6]        :                                       .8086
+[   7]        :                                       
+[   8]        :                                       ; STACK SEGMENT SECTION
+[   9]        :                                       .STACK 100H ; SPECIFIYING THE SIZE OF THE STACK
+[  10]        :                                       
+[  11]        :                                       ; DATA SEGMENT SECTION  :  WHERE WE DEFINE VARIABLES, POINTERS OR CONSTANTS
+[  12]        :                                       .DATA
+[  13]    0100: 05                                    N1 DB 5
+[  14]    0101: 02                                    N2 DB 2 ; two variables n1 and n2 initialized
+[  15]    0102: 00                                    SUM DB ? ; Uninitialized variables
+[  16]        :                                       
+[  17]        :                                       ; constant variables using the EQU directive
+[  18]        :                                       LF EQU OAh
+[  19]        :                                       CR EQU 0Dh
+[  20]        :                                       HT EQU 09h
+[  21]        :                                       
+[  22]    0103: 45 6E 74 65 72 20 74 68 65 20 66 69   msg1 DB "Enter the first number: $"
+                72 73 74 20 6E 75 6D 62 65 72 3A 20 
+                24                                  
+[  23]    011C: 45 6E 74 65 72 20 74 68 65 20 73 65   msg2 DB "Enter the second number: $"
+                63 6F 6E 64 20 6E 75 6D 62 65 72 3A 
+                20 24                               
+[  24]    0136: 53 75 6D 20 3D 20 24                  msg3 DB "Sum = $"
+[  25]        :                                       
+[  26]        :                                       ; CODE SEGMENT SECTION: WHERE THE ACTUAL PROGRAM RESIDES
+[  27]        :                                       .CODE
+[  28]    0140:                                       MAIN PROC
+[  29]    0140: B8 10 00                              MOV AX, @DATA
+[  30]    0143: 8E D8                                 MOV DS, AX
+[  31]        :                                       
+[  32]        :                                       ; the following three lines do a basic print statement
+[  33]    0145: BA 03 00                              LEA DX, msg1
+[  34]    0148: B4 09                                 MOV AH, 09h
+[  35]    014A: CD 21                                 INT 21h
+[  36]        :                                       ; print statement over
+[  37]        :                                       
+[  38]        :                                       ; read single character with echo
+[  39]        :                                       ;MOV AH, 01h
+[  40]        :                                       ;INT 21h
+[  41]        :                                       ; end read singe char
+[  42]        :                                       
+[  43]        :                                       
+[  44]        :                                       ; read single character without echo
+[  45]    014C: B4 08                                 MOV AH, 08h
+[  46]    014E: CD 21                                 INT 21h
+[  47]        :                                       ; end read singe char
+[  48]        :                                       
+[  49]        :                                       
+[  50]        :                                       ; CLOSING SECTION
+[  51]    0150: B4 4C                                 MOV AH, 4Ch
+[  52]    0152: CD 21                                 INT 21h
+[  53]        :                                       
+[  54]        :                                       MAIN ENDP
+[  55]        :                                       END MAIN
+[  56]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 54      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 07      -   check sum (l.byte)
+0013: 5B      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 14      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 14      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

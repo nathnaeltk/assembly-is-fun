@@ -1,0 +1,18 @@
+< THE SYMBOL TABLE >  IO.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+N1                       	00000     	1         	VAR       	data      
+N2                       	00001     	1         	VAR       	data      
+SUM                      	00002     	1         	VAR       	data      
+MSG1                     	00003     	1         	VAR       	data      
+MSG2                     	0001C     	1         	VAR       	data      
+MSG3                     	00036     	1         	VAR       	data      
+CODE                     	00014     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+===================================================================================================
+[ 4/25/2024  --  9:48:12 AM ] 
+< END >
+ 
